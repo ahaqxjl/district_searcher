@@ -9,8 +9,9 @@ class District(object):
         self.name = name
         self.center = center
         self.level = level
+        self.parent = parent
 
-    def __init__(self, district_json):
+    def __init__(self, district_json, parent):
         if 'citycode' in district_json:
             self.city_code = district_json['citycode']
         if 'adcode' in district_json:
@@ -21,6 +22,7 @@ class District(object):
             self.center = district_json['center']
         if 'level' in district_json:
             self.level = district_json['level']
+        self.parent = parent
 
     def print(self):
         print('city_code: ', self.city_code)
@@ -28,4 +30,8 @@ class District(object):
         print('name: ', self.name)
         print('center: ', self.center)
         print('level: ', self.level)
+        print('parent', self.parent)
+
+    def __str__(self):
+        return self.name
 
