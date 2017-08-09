@@ -1,0 +1,2 @@
+host: 'http://restapi.amap.com/v3/config/district?'
+key: 'ef5655ca17a2c9d6adf67810b12cf9c1'
