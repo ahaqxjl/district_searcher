@@ -32,6 +32,20 @@ class District(object):
         print('level: ', self.level)
         print('parent', self.parent)
 
+    def generate_insert_sql(self):
+        table_name = 'district'
+        city_code = 'city_code'
+        ad_code = 'ad_code'
+        name = 'name'
+        center = 'center'
+        level = 'level'
+        parent = 'parent'
+        parent_value = 'null'
+        if self.parent is not None:
+            parent_value = "id from {} where {} = '{}'".format(table_name, ad_code, self.parent.ad_code)
+        format_str = "insert into {} ({}, {}, {}, {}, {}) select '{}', '{}', '{}', '{}', {};"
+        return format_str.format(table_name, city_code, ad_code, name, level, parent, self.city_code, self.ad_code, self.name, self.level, parent_value)
+
     def __str__(self):
         return self.name
 
